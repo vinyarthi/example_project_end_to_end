@@ -6,6 +6,8 @@ I will be doing every phase and every step of this project.
 
 Hence, I will be choosing a very simple deterministic project as an example. 
 
+In this case, it is a simple calculator. 
+
 An I idea that I have in mind is that of a simple calculator. 
 
 Let's start. 
