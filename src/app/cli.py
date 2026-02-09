@@ -1,48 +1,30 @@
 from __future__ import annotations
 
+import argparse
+
 from core.calculator import add, divide, multiply, subtract
 
-OPS = {"+": add, "*": multiply, "/": divide, "-": subtract}
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="calc", description="Simple Calculator CLI")
+    parser.add_argument("--version", action="version", version="calc 0.1.0")
 
+    subparsers = parser.add_subparsers(dest="command", required=True)
 
-def parse_input_numbers(input_str: str) -> tuple[float, float]:
-    parts = input_str.strip().split()
-    if len(parts) != 2:
-        raise ValueError(
-            "Please enter exactly two numbers separated by space. Example: '12 43'"
-        )
-    return (float(parts[0]), float(parts[1]))
+    for name in ("add", "subtract", "multiply", "divide"):
+        p = subparsers.add_parser(name)
+        p.add_argument("a", type=float)
+        p.add_argument("b", type=float)
+
+    return parser
 
 
 def main() -> None:
-    print("Calculator CLI")
-    print("Available operations: +, -, *, /, clear, exit")
-    print("Usage: choose an operation, then enter two numbers like: '12 43'")
+    parser = build_parser()
+    args = parser.parse_args()
 
-    while True:
-        user_input = input("op> ").strip().lower()
-
-        if user_input in ("exit", "quit", "q"):
-            print("Bye.")
-            return
-
-        if user_input in ("clear", "cls", "c"):
-            print("Cleared.\n")
-            continue
-
-        if user_input not in OPS:
-            print("Invalid operation. Please enter a valid operation (+, -, *, /).")
-            continue
-
-        try:
-            num1, num2 = parse_input_numbers(input("nums> "))
-            operation = OPS[user_input]
-            result = operation(num1, num2)
-            print(f"Result: {result}\n")
-        except ValueError as ve:
-            print(f"Input error: {ve}\n")
-        except ZeroDivisionError as zde:
-            print(f"Math error: {zde}\n")
+    ops = {"add": add, "subtract": subtract, "multiply": multiply, "divide": divide}
+    result = ops[args.command](args.a, args.b)
+    print(f"Result: {result}\n")
 
 
 if __name__ == "__main__":
