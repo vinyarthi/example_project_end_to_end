@@ -17,7 +17,7 @@ Let's start.
 
 ### From source
 Download the latest release:
-https://github.com/<your-username>/<repo>/releases/latest
+https://github.com/vinyarthi/example_project_end_to_end/releases/latest
 
 Or clone the repository and install in editable mode:
 ```bash
