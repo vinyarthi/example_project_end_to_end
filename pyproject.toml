@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "calculator.cli"
+version = "0.1.0"
+description = "A simple calculator CLI to learn product development end-to-end."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+calc="app.cli:main"
+

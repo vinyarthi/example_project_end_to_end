@@ -1,5 +1,5 @@
-import pytest
-from core.calculator import add,multiply,divide,subtract
+import pytest # pyright: ignore[reportMissingImports] 
+from src.core.calculator import add,multiply,divide,subtract
 
 def test_add():
     assert add(2,3) == 5
@@ -15,6 +15,6 @@ def test_subtract():
 
 def test_division_by_zero():
     with pytest.raises(ZeroDivisionError):
-        div(10,0)
+        divide(10,0)
 
 
