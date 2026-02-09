@@ -1,19 +1,18 @@
 from __future__ import annotations
 
-from core.calculator import add,multiply,divide,subtract  
+from core.calculator import add, divide, multiply, subtract
 
-OPS = {
-    "+": add,
-    "*": multiply,
-    "/": divide,
-    "-": subtract
-}
+OPS = {"+": add, "*": multiply, "/": divide, "-": subtract}
+
 
 def parse_input_numbers(input_str: str) -> tuple[float, float]:
     parts = input_str.strip().split()
     if len(parts) != 2:
-        raise ValueError("Please enter exactly two numbers separated by space. Example: '12 43'")
+        raise ValueError(
+            "Please enter exactly two numbers separated by space. Example: '12 43'"
+        )
     return (float(parts[0]), float(parts[1]))
+
 
 def main() -> None:
     print("Calculator CLI")
@@ -23,15 +22,15 @@ def main() -> None:
     while True:
         user_input = input("op> ").strip().lower()
 
-        if user_input in ("exit","quit","q"):
+        if user_input in ("exit", "quit", "q"):
             print("Bye.")
-            return 
-        
-        if user_input in ("clear","cls","c"):
+            return
+
+        if user_input in ("clear", "cls", "c"):
             print("Cleared.\n")
             continue
 
-        if not(user_input in OPS):
+        if user_input not in OPS:
             print("Invalid operation. Please enter a valid operation (+, -, *, /).")
             continue
 
@@ -44,6 +43,7 @@ def main() -> None:
             print(f"Input error: {ve}\n")
         except ZeroDivisionError as zde:
             print(f"Math error: {zde}\n")
+
 
 if __name__ == "__main__":
     main()
