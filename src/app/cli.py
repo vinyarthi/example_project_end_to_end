@@ -4,6 +4,7 @@ import argparse
 
 from core.calculator import add, divide, multiply, subtract
 
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="calc", description="Simple Calculator CLI")
     parser.add_argument("--version", action="version", version="calc 0.1.0")
