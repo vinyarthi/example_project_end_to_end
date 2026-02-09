@@ -11,3 +11,15 @@ In this case, it is a simple calculator.
 An I idea that I have in mind is that of a simple calculator. 
 
 Let's start. 
+
+
+## Installation
+
+### From source
+Download the latest release:
+https://github.com/<your-username>/<repo>/releases/latest
+
+Or clone the repository and install in editable mode:
+```bash
+pip install -e .
+

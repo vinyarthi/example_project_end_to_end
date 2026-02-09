@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import pytest
+import pytest  # type: ignore
 
-from app.cli import main
+from src.app.cli import main
 
 
 def test_cli_add(capsys, monkeypatch):
